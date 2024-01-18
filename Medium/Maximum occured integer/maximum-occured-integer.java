@@ -52,27 +52,26 @@ class Main {
 class Solution{
     //Function to find the maximum occurred integer in all ranges.
     public static int maxOccured(int L[], int R[], int n, int maxx){
-        int [] freq = new int[maxx + 1]; 
-        
+        int arr [] = new int[100000];
         
         for(int i = 0 ; i < n ; i++){
-            freq[L[i]]++;
-            if(R[i] + 1 <= maxx) {
-                freq[R[i] + 1]--;
-                
-            }
+            arr[L[i]]++;
+            arr[R[i] + 1]--;
         }
+        
+        for(int i = 1 ; i < 100000 ; i++){
+            arr[i] = arr[i] + arr[i - 1];
+        }
+        
         int res = 0;
-        for(int i = 1; i< maxx ; i++){
-            freq[i] = freq[i-1] + freq[i];
-            if(freq [i] > freq[res]){
-                res = i ;
+        for(int i = 0 ; i < 100000 ; i++){
+            if(arr[i] > arr[res]){
+                res = i;
             }
-            
         }
         
         return res;
-    }
+    } 
     
 }
 
