@@ -34,28 +34,22 @@ class Solution {
     int getPairsCount(int[] arr, int n, int target) {
         
         int count = 0 ;
+        HashMap<Integer,Integer> hmap = new HashMap<>();
         
-         HashMap<Integer,Integer> hmap=new HashMap<>();
-         
-         for( int i = 0 ; i < n  ; i ++){
-             int diff = target - arr[i];
-             
-             if(hmap.containsKey(diff)){
-                 count = count + hmap.get(diff);
-                //  hmap.put(arr[i],hmap.get(arr[i])+1);
-             }
-             if(!hmap.containsKey(arr[i])){
-                 hmap.put(arr[i],1);
-             }else{
-                 hmap.put(arr[i],hmap.get(arr[i])+1);
-             } 
-             
-            //  if(hmap.containsKey(diff)){
-            //      count = count + hmap.get(diff);
-            //     //  hmap.put(arr[i],hmap.get(arr[i])+1);
-            //  }
-         }
-         
-         return count;
+        for(int i = 0 ; i < n ; i++){
+            int diff = target - arr[i];
+            
+            if(hmap.containsKey(diff)){
+                count = count + hmap.get(diff);
+            }
+            
+            if(!hmap.containsKey(arr[i])){
+                hmap.put(arr[i],1);
+            }
+            else{
+                hmap.put(arr[i] , hmap.get(arr[i])+1);
+            }
+        }
+        return count ;
     }
 }
