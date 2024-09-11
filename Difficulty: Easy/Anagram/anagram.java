@@ -31,21 +31,21 @@ class GFG {
 class Solution {
     // Function is to check whether two strings are anagram of each other or not.
     public static boolean isAnagram(String a, String b) {
+
+        // Your code here
         
         if(a.length() != b.length()){
             return false;
         }
         
-        char a1[] = a.toCharArray();
+        char a1 [] = a.toCharArray();
         Arrays.sort(a1);
         String ans1 = new String(a1);
         
-        char a2[] = b.toCharArray();
+        char a2 [] = b.toCharArray();
         Arrays.sort(a2);
         String ans2 = new String(a2);
         
-        return ans1.equals(ans2) ;
+        return ans1.equals(ans2);
     }
-    
-    
 }
